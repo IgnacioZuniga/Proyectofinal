@@ -1,0 +1,83 @@
+<html>
+
+     <head>
+     
+    <meta charset="utf-8"> 
+     
+    <Title> Proyecto Final </Title>
+     
+    <h1 style="text-align: center ; color: gold">Proyecto Final</h1>
+     
+    
+     <p> <ul style="color: darkblue; text-align: center">Configurar la Red Anfitrion: </ul> Para configurar la red anfitrion debemos acceder a la maquina VirtualBox, ir a "Herramientas globales" y una vez en ese apartado daremos click en "Crear" que se encuentra en la parte superior izquierda y una vez que hayamos hecho eso se haremos la tarjeta 2 y lo habilitamos.
+         
+     Una vez seleccionada la maquina virtual que creamos nos vamos a "Configuracion" y vamos al apartado de "Red", entonces clickeamos "Adaptador 2" y ahi Habilitamos adaptador de red dando click en el cuadrito, clickeamos "Conectado a red solo anfitrion" y cambiamos el nombre a "VirtualBox Host-only Ethernet Adapter #2", entonces el adaptador de red anfitrion listo para ser usado.</p>
+    
+     <p> <ul style="color: darkblue; text-align: center">Actualizacion de los paquetes: </ul>Para actualizar los paquetes demebos insertar este codigo: "sudo apt update", al darle enter se buscaran las actualizaciones disponibles, introduciremos la contraseña y listo.
+     
+     Para instalar los paquetes tendremos que insertar el codigo siguiente: "sudo apt upgrade", daremos enter  y cargaran los paquetes que podemos actualizar, nos pedira una confirmacion y daremos "s" y luego "Enter".</p>
+     
+     <p><ul style="color: darkblue; text-align: center">Instalacion de paquetes de Ubuntu: </ul>Ya que tengamos actualizados los paquetes de Ubuntu, procederemos a instalar los siguientes servicios PHP, MySQL, Apache con los siguientes comandos: sudo apt install php mysql-server apache2 php-mysql.</p>
+     
+     <p><ul style="color: darkblue; text-align: center">Activacion de servicios: </ul>Para Activar los servicios tenemos que poner estos comandos:
+
+    
+<p style="text-align: center; color: brown">"sudo service apache 2 start" </p> <p style="text-align: center; color: brown">"sudo service mysql start".</p>  
+
+      
+<p><ul style="color: darkblue; text-align: center" >Clonar el repositorio: </ul> Si queremos clonar el repositorio nos movemos a la carpeta html con el comando "cd /var/www/html", ya que estemos ahi tendreemos que insertar el siguiente comando "sudo git clone https://github.com/dgeti-cetis108/Programacion-M4S2-2018.git", luego le vamos a cambiar el nombre con el comando: "sudo mv Programacion-M4S2-2018/library.com".</p>
+     
+     <p><ul style="color: darkblue; text-align: center">Creacion de usuario MySQL: </ul>Para crear un usuario usa el comando: 
+"create user" 'ignacio' @'localhost' identified by '123 luego tememos que dar permisos de administrador con el comando: grant all on library.* to 'ignacio'@'localhost'.</p>
+     
+     <p><ul style="color: darkblue; text-align: center">Modificar usuario y contraseña: </ul>Para cambiar el usuario y la contraseña vamos a poner el siguiente comando: "cd library.com/classes" y "/library.com/classes$ sudo nano conexion.php" en esa ventana editaremos el usuario y contraseña que habiamos hecho.</p>
+     
+     <p><ul style="color: darkblue; text-align: center">
+         Configuracion del VirtualHost: </p> <p style="color: black"> Entramos a la carpeta /etc/apache2/sites-available , en la carpeta escribiremos "sudo nano library.com.conf" para poder modificarlo.</p>
+     
+
+     <p style="text-align: left">"Dentro del archivo, escribe el siguiente codigo" :</p>
+     <ul>
+         <p style="text-align: left">"VirtualHost*:80"></p>
+         
+         <p style="text-align: left">"Server Name library.com" </p>
+         
+         <p style="text-align: left">"Server Alias www.library.com" </p>
+         
+         <p style="text-align: left">"Server Admin ignacio_zc@hotmail.com" (ejemplo)</p>
+         
+         <p style="text-align: left">"DocumentRoot /var/log/library.com-error.log"</p>
+         
+<p style="text-align: left">CustomLog /var/log/library.com-acces.log. common" </p>
+         
+         <p style="text-align: left">ServerName</p>
+         
+         <p style="text-align: left">/VirtualHost></p>
+         
+         <p style="color: red; text-align: left"> ADVERTENCIA: ANTES DE CADA VIRTUALHOST, LLEVA OTRA INVERSA A LA FINALIZADA. </p>
+    </ul>
+     
+     <p style="text-align: left">
+         Revisa que tus carpetas estén en el siguiente orden /etc/apache2/sites-available/ escribiendo el comando ls .
+     </p>
+     
+     <p style="text-align: left">En la carpeta sites-available escribe:
+         "sudo a2ensite library.com" (para habilitar el dominio)</p>
+     
+     <p style="text-align: left">Reinicia el servicio de apache con el comando sudo service apache2 restart</p>
+     
+     <p style="text-align: left">Entra a la carpeta /etc/hosts/ y agrega lo siguiente:</p>
+     
+     <ul>
+         <p style="text-align: left">127.0.0.1 library.com</p>
+         <p style="text-align: left">127.0.0.1 www.library.com</p>
+     </ul>
+     <p style="text-align: left">Guarda los cambios con el comando "Ctrl+O"</p>
+     <p style="text-align: left">Una vez fuera de la maquina virtual en consola entra a la siguiente carpeta: /etc/hosts y agrega el ip de la red anfitrion + nombre del dominio. Por ejemplo: </p>
+     <ul>
+         <p style="text-align: left">192.168.56.101 library.com</p>
+         <p style="text-align: left">192.168.56.101 www.library.com</p>
+     </ul>
+     
+    </head>
+</html>
